@@ -2,13 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>ChatApp</title>
+    <title>Socket.IO Chat with Username</title>
     <style>
       h1 {
         text-align: center;
-        background-color: rgb(98, 98, 247);
+        background-color: rgb(179, 179, 255);
         margin-top: 0;
-        border-radius: 4px;
       }
       body {
         font-family: Arial, sans-serif;
@@ -101,6 +100,13 @@
       const input = document.getElementById("input");
       const messages = document.getElementById("messages");
 
+      // Prompt user for their name
+      let username = "";
+      while (!username) {
+        username = prompt("Enter your name:");
+      }
+      socket.emit("set username", username);
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (input.value) {
@@ -134,3 +140,4 @@
     </script>
   </body>
 </html>
+
